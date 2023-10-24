@@ -1,3 +1,7 @@
 from django.shortcuts import render
+from tasks.models import Tasks, Project
 
-# Create your views here.
+def index(request):
+    projects = Project.objects.all()
+
+    return render(request, 'index.html', {"projects": projects})
