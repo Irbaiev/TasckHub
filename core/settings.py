@@ -37,10 +37,15 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "django.contrib.sites",
 
     #local app
     'accounts',
     'tasks',
+
+    #other app
+    # "allauth",
+    # "allauth.account"
 ]
 
 MIDDLEWARE = [
@@ -83,6 +88,13 @@ DATABASES = {
         "NAME": BASE_DIR / "db.sqlite3",
     }
 }
+
+# AUTHENTICATION_BACKENDS = [
+#     'django.contrib.auth.backends.ModelBackend',
+
+#     'allauth.account.auth_backends.AuthenticationBackend',
+    
+# ]
 
 
 # Password validation
@@ -128,3 +140,6 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 LOGIN_REDIRECT_URL = "/"
 LOGOUT_REDIRECT_URL = "/"
+
+
+SITE_ID = 1
