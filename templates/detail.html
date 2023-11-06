@@ -12,4 +12,7 @@
       <li>{{ task.name }}: {{ task.content }}</li>
     {% endfor %}
   </ul>
+
+  <a href="{% url 'delete_project' project.pk%}" class="btn btn-danger">Удалить пост</a> <br>
+  <a href="{% url 'edit_project' project.pk%}" class="btn btn-danger">Изменрить пост</a> <br>
 {% endblock %}

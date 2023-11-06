@@ -5,12 +5,13 @@ User = get_user_model()
 
 
 class Project(models.Model):
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
     name = models.CharField(max_length=250)
     content = models.TextField(default='Описание проекта...')
   
 
     def __str__(self) -> str:
-        return self.name
+        return f'Создатель {self.author}, Название {self.name}'
 
 class Tasks(models.Model):
     project = models.ForeignKey(Project, on_delete=models.CASCADE, null=True)
