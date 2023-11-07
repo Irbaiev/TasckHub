@@ -12,7 +12,8 @@
       <li>{{ task.name }}: {{ task.content }}</li>
     {% endfor %}
   </ul>
-
+  {% if user.is_authenticated and request.user == user %}
   <a href="{% url 'delete_project' project.pk%}" class="btn btn-danger">Удалить пост</a> <br>
   <a href="{% url 'edit_project' project.pk%}" class="btn btn-danger">Изменрить пост</a> <br>
+  {% endif %}
 {% endblock %}

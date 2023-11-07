@@ -11,15 +11,16 @@
 <body class="bg-teal-600">
     <nav class="flex items-center justify-between px-4 py-6 bg-teal-800">
         <div>
-            <a href="/" class="text-xl text-white">Djangochat</a>
+            <a href="/" class="text-xl text-white">TaskHub</a>
         </div>
         {% if request.user.is_authenticated %}	
 
         <div class="flex items-center space-x-4">
             <a href="{% url 'createproject'%}" class="text-white hover:text-gray-200">Create project</a>
 
-
             <a href="{% url 'logout' %}" class="px-5 py-3 rounded-xl text-white bg-teal-600 hover:bg-teal-700">Log out</a>
+
+            <a href="{% url 'user_profile' user.username%}" class="text-xl text-white">{{ user.username }}</a>
             
         </div>
 
