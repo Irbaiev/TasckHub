@@ -1,15 +1,26 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from django.contrib.auth import get_user_model
+
 
 from tasks.forms import ProjectForm, EditProjectForm
 from tasks.models import Tasks, Project
 
-User = get_user_model()
 
 
 def index(request):
-    projects = Project.objects.all()
-    return render(request, 'index.html', {"projects": projects})
+    # current_user = request.GET.get('user')
+    # logged_in_user = request.user.username
+
+    return render(request, 'index.html')
+
+# def followers_count(request):
+#     if request.method == 'POST':
+#         value = request.POST['value']
+#         user = request.POST['user']
+#         follower = request.POST['follower']
+#         if value == 'follow':
+#             followers_cnt = FollowerCount.objects.create(follower=follower, user=user)
+#             followers_cnt.save()
+#         return redirect('/?user='+user)
 
 
 
@@ -63,7 +74,11 @@ def delete_project(request, pk):
 
 def user_profile(request, username):
     user = request.user
-
     projects = Project.objects.filter(author=user)
     
-    return render(request, 'profile.html', {'user': user, 'projects': projects})
+    return render(request, 'profile.html', {'user': user, 'projects': projects,})
+
+
+    
+
+

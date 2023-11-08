@@ -1,7 +1,7 @@
 from django.db import models
-from django.contrib.auth import get_user_model
+from core import settings
 
-User = get_user_model()
+User = settings.AUTH_USER_MODEL
 
 
 class Project(models.Model):

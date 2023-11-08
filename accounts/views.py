@@ -12,3 +12,5 @@ class Singup(CreateView):
         # Сохраняем пользователя и возвращаем успешный HTTP ответ
         self.object = form.save()
         return super().form_valid(form)
+    
+
