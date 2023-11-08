@@ -10,7 +10,10 @@ class RegisterUserForm(UserCreationForm):
         label="Логин",
         widget=forms.TextInput(attrs={"class": "w-full mt-2 px-4 py-2 rounded-xl"}),
     )
-    email = forms.EmailField(label='Email', widget=forms.EmailInput(attrs={"class": "w-full mt-2 px-4 py-2 rounded-xl"}))
+    email = forms.EmailField(
+        label="Email",
+        widget=forms.EmailInput(attrs={"class": "w-full mt-2 px-4 py-2 rounded-xl"}),
+    )
     password1 = forms.CharField(
         label="Пароль",
         widget=forms.PasswordInput(attrs={"class": "w-full mt-2 px-4 py-2 rounded-xl"}),
@@ -22,4 +25,4 @@ class RegisterUserForm(UserCreationForm):
 
     class Meta:
         model = User
-        fields = ("username", "email" ,"password1", "password2")
+        fields = ("username", "email", "password1", "password2")

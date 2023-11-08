@@ -38,12 +38,10 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "django.contrib.sites",
-
-    #local app
-    'accounts',
-    'tasks',
-
-    #other app
+    # local app
+    "accounts",
+    "tasks",
+    # other app
     # "allauth",
     # "allauth.account"
 ]
@@ -63,7 +61,7 @@ ROOT_URLCONF = "core.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [ BASE_DIR / 'templates'],
+        "DIRS": [BASE_DIR / "templates"],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -93,7 +91,7 @@ DATABASES = {
 #     'django.contrib.auth.backends.ModelBackend',
 
 #     'allauth.account.auth_backends.AuthenticationBackend',
-    
+
 # ]
 
 
@@ -141,6 +139,6 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 LOGIN_REDIRECT_URL = "/"
 LOGOUT_REDIRECT_URL = "/login/"
 
-AUTH_USER_MODEL = 'accounts.CustomUser'
+AUTH_USER_MODEL = "accounts.CustomUser"
 
 SITE_ID = 1
