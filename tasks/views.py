@@ -3,24 +3,10 @@ from django.shortcuts import render, get_object_or_404, redirect
 
 from tasks.forms import ProjectForm, EditProjectForm
 from tasks.models import Tasks, Project
-
+from accounts.models import CustomUser, FriendRequest
 
 def index(request):
-    # current_user = request.GET.get('user')
-    # logged_in_user = request.user.username
-
     return render(request, "index.html")
-
-
-# def followers_count(request):
-#     if request.method == 'POST':
-#         value = request.POST['value']
-#         user = request.POST['user']
-#         follower = request.POST['follower']
-#         if value == 'follow':
-#             followers_cnt = FollowerCount.objects.create(follower=follower, user=user)
-#             followers_cnt.save()
-#         return redirect('/?user='+user)
 
 
 def task_detail(request, pk):
@@ -83,3 +69,23 @@ def user_profile(request, username):
             "projects": projects,
         },
     )
+
+def add_friends(request):
+    alluser = CustomUser.objects.exclude(username=request.user)
+    fr = FriendRequest.objects.filter(to_user=request.user)
+    return render(request, 'friends.html', {'alluser': alluser, 'fr':fr})
+
+
+def send_request(request, id):
+    from_user = request.user
+    to_user = CustomUser.objects.get(id=id)
+    frequest = FriendRequest.objects.get_or_create(from_user=from_user, to_user=to_user)
+    return redirect('index')
+
+def accept_request(request, id):
+    frequest = FriendRequest.objects.get(id=id)
+    user1 = request.user
+    user2 = frequest.from_user
+    user1.friends.add(user2)
+    user2.friends.add(user1)
+    return redirect('index')

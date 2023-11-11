@@ -21,3 +21,6 @@ class FriendRequest(models.Model):
     to_user = models.ForeignKey(
         CustomUser, related_name="to_user", on_delete=models.CASCADE
     )
+
+    def __str__(self) -> str:
+        return f'От {self.from_user}, к {self.to_user}'
