@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from accounts.models import FollowerCount, FriendRequest
+from accounts.models import CustomUser, FriendRequest
 
-admin.site.register(FollowerCount)
+admin.site.register(CustomUser)
 admin.site.register(FriendRequest)
