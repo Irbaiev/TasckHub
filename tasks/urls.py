@@ -7,9 +7,6 @@ urlpatterns = [
     path("create-project", views.createproject, name="createproject"),
     path("project/<int:pk>/delete/", views.delete_project, name="delete_project"),
     path("project/<int:pk>/edit/", views.edit_project, name="edit_project"),
-    path('profile/<str:username>', views.user_profile, name='user_profile'),
-    path("add-friends", views.add_friends, name='add-friend'),
-    path("add-friends/<int:id>", views.send_request, name='add_friends'),
-    path("accept/<int:id>", views.accept_request, name='accept_friends'),
+    
 
 ]

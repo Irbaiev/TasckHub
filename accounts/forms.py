@@ -26,3 +26,9 @@ class RegisterUserForm(UserCreationForm):
     class Meta:
         model = CustomUser
         fields = ("username", "email", "password1", "password2")
+
+
+class EditUserForm(forms.ModelForm):
+    class Meta:
+        model = CustomUser
+        fields = ('username', 'email', 'avatar', 'first_name', 'last_name',)
