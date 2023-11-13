@@ -55,5 +55,3 @@ def delete_project(request, pk):
         )  # Перенаправляем на страницу с проектами или другую целевую страницу
 
     return render(request, "delete_project.html", {"project": project})
-
-

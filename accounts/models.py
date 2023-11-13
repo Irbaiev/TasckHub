@@ -2,10 +2,10 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 
 
-
-
 class CustomUser(AbstractUser):
-    avatar = models.ImageField(null=True, blank = True, upload_to='./image/user-avatar', verbose_name='avatar')
+    avatar = models.ImageField(
+        null=True, blank=True, upload_to="./image/user-avatar", verbose_name="avatar"
+    )
     friends = models.ManyToManyField("self", blank=True)
 
 
@@ -18,4 +18,4 @@ class FriendRequest(models.Model):
     )
 
     def __str__(self) -> str:
-        return f'От {self.from_user}, к {self.to_user}'
+        return f"От {self.from_user}, к {self.to_user}"

@@ -3,8 +3,6 @@ from django.contrib.auth.forms import UserCreationForm
 from accounts.models import CustomUser
 
 
-
-
 class RegisterUserForm(UserCreationForm):
     username = forms.CharField(
         label="Логин",
@@ -31,4 +29,10 @@ class RegisterUserForm(UserCreationForm):
 class EditUserForm(forms.ModelForm):
     class Meta:
         model = CustomUser
-        fields = ('username', 'email', 'avatar', 'first_name', 'last_name',)
+        fields = (
+            "username",
+            "email",
+            "avatar",
+            "first_name",
+            "last_name",
+        )

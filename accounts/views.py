@@ -10,7 +10,6 @@ from accounts.forms import EditUserForm
 from tasks.models import Project
 
 
-
 class Singup(CreateView):
     form_class = RegisterUserForm
     template_name = "registration/register.html"
@@ -20,7 +19,7 @@ class Singup(CreateView):
         # Сохраняем пользователя и возвращаем успешный HTTP ответ
         self.object = form.save()
         return super().form_valid(form)
-    
+
 
 def user_profile(request, username):
     user = request.user
@@ -35,17 +34,19 @@ def user_profile(request, username):
         },
     )
 
+
 def add_friends(request):
     alluser = CustomUser.objects.exclude(username=request.user)
     fr = FriendRequest.objects.filter(to_user=request.user)
-    return render(request, 'friends.html', {'alluser': alluser, 'fr':fr})
+    return render(request, "friends.html", {"alluser": alluser, "fr": fr})
 
 
 def send_request(request, id):
     from_user = request.user
     to_user = CustomUser.objects.get(id=id)
     frequest = FriendRequest.objects.get_or_create(from_user=from_user, to_user=to_user)
-    return redirect('index')
+    return redirect("index")
+
 
 def accept_request(request, id):
     frequest = FriendRequest.objects.get(id=id)
@@ -53,7 +54,7 @@ def accept_request(request, id):
     user2 = frequest.from_user
     user1.friends.add(user2)
     user2.friends.add(user1)
-    return redirect('index')
+    return redirect("index")
 
 
 def edit_profile(request, pk):
